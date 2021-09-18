@@ -27,7 +27,7 @@ const transform = function() {
 GLOBAL_DIRTY_STORAGE = {};
 const areas = ['comments_area', 'blocks_area', 'result_area'];
 for (var areaIndex in areas) {
-  var area = areas[areaIndex];
+  const area = areas[areaIndex];
   if (GLOBAL_DIRTY_STORAGE[area + "_messasge_counter_event"] == undefined) {
     console.log("For area: " + area);
     $("#" + area).on('change paste', function() {
