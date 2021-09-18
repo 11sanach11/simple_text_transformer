@@ -21,18 +21,19 @@ const transform = function() {
     }
   }
   console.log("Result: " + result.join("\n"));
+  var text = 'Количество строк: ' + result.length;
+  $('#result_area_items_counter').text(text);
   $("#result_area").val(result.join("\n"));
 }
 
 GLOBAL_DIRTY_STORAGE = {};
-const areas = ['comments_area', 'blocks_area', 'result_area'];
+const areas = ['comments_area', 'blocks_area'];
 for (var areaIndex in areas) {
   const area = areas[areaIndex];
   if (GLOBAL_DIRTY_STORAGE[area + "_messasge_counter_event"] == undefined) {
     console.log("For area: " + area);
     $("#" + area).on('change paste', function() {
       var text = 'Количество строк: ' + ($(this).val().split("\n").length);
-      console.log("event listener worked. value: " + text)
       $('#' + area + '_items_counter').text(text);
     });
     GLOBAL_DIRTY_STORAGE[area + "_messasge_counter_event"] = true;
